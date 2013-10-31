@@ -1,4 +1,3 @@
-# Heap Sort algorithms
 def heapSort(A):
     heapify(A)
     length = len(A)
@@ -9,7 +8,6 @@ def heapSort(A):
         siftDown(A, 0, end)        
     return A
 
-# Initialize a binary heap
 def heapify(A):
     heapsize = len(A)
     parent = (heapsize -2)/2
@@ -17,7 +15,6 @@ def heapify(A):
         siftDown(A, parent, heapsize -1)
         parent = parent -1
 
-# In each step, reorder the location of parent node based on its value
 def siftDown(A, start, end):
     root = start
     left = root * 2 + 1
