@@ -41,14 +41,17 @@ def dfs_first(graph, vertex, finishing_time):
 	visited[vertex] = 1
 	while stack:
 		node = stack[-1]
-		#visited node has two status 1 and 2. Status 1 is for bookkeeping explored nodes and status 2 is for computing ordering of the nodes
+		#visited node has three status 1, 2 and 3. Status 1 is for bookkeeping explored nodes, status 2 is for computing ordering of the nodes, and status 3 is for bookkeeping the nodes whose ordering have already been computed
 		if visited[node] == 2:
 			finishing_time.append(node)
+			stack.pop()
+			visited[node] = 3
+		elif visited[node] == 3:
 			stack.pop()
 		else:
 			visited[node] = 2
 			for neighbor in graph[node]:
-				if visited[neighbor] == 0:
+				if visited[neighbor] < 2:
 					stack.append(neighbor)
 					visited[neighbor] = 1
 
